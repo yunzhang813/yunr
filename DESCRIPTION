@@ -5,8 +5,8 @@ Version: 0.0.1
 Date: 2015-09-10
 Author: Yun Zhang
 Maintainer: Yun Zhang <yun_zhang@urmc.rochester.edu>
-Description: Homework of BST550 - Genomic Data Analysis Using R/Bioconductor (Fall 2015)
+Description: Homework of BST550 - Genomic Data Analysis Using R/Bioconductor (Fall 2015).
 Depends: R (>= 3.1.0)
 VignetteBuilder: knitr
 Suggests: knitr, rmarkdown, RUnit, BiocGenerics
-License: MIT
+License: GPL-3

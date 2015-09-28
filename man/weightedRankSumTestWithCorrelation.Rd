@@ -21,9 +21,9 @@ weightedRankSumTestWithCorrelation(index, statistics, weights=NULL, correlation=
   \item{df}{degrees of freedom, based on which the correlation is estimated.} 
 }
 
-\details{
+%\details{
 %%  ~~ If necessary, more details than the description above ~~
-}
+%}
 
 \value{
 P-values (\code{less}, \code{greater}) for one-sided left and right tails respectively.
@@ -42,9 +42,9 @@ Wu, D, and Smyth, GK (2012). Camera: a competitive gene set test accounting for 
 Yun Zhang
 }
 
-\note{
+%\note{
 %%  ~~further notes~~
-}
+%}
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
@@ -70,7 +70,7 @@ group[index] <- 1
 group <- factor(group)
 wilcox.test(stat ~ group, alternative = "less")
 wilcox.test(stat ~ group, alternative = "greater")
-
+}
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

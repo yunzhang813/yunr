@@ -17,7 +17,7 @@ weightedRankSumTestWithCorrelation(index, statistics, weights=NULL, correlation=
   \item{index}{vector of indices indicating the test group elements.}
   \item{statistics}{numeric vector contains all the summary statistics or observed values from both groups.}
   \item{weights}{numeric vector, of the same length as \code{index}, giving weights for the elements in the test group. If \code{NULL}, all elements are weighted equally with unit weight.}
-  \item{correlation}{correlation in the test group. Elements in the second group are assumed independent of each other and of the test group.} 
+  \item{correlation}{correlation in the test group. Elements in the second group are assumed independent of each other and of the test group. Default value = 0.} 
   \item{df}{degrees of freedom, based on which the correlation is estimated.} 
 }
 
@@ -59,26 +59,18 @@ set.seed(1)
 stat <- rnorm(100)
 index <- 1:10
 stat[index] <- stat[1:10]+1
+weight <- runif(length(index), 0, 1)
 
-## Wilcoxon rank sum test: no correlation, no weights
+weightedRankSumTestWithCorrelation(index, stat)
+weightedRankSumTestWithCorrelation(index, stat, weight=weight, correlation=0.1)
+
+## Wilcoxon rank sum test
 group <- rep(2,100)
 group[index] <- 1
 group <- factor(group)
 wilcox.test(stat ~ group, alternative = "less")
 wilcox.test(stat ~ group, alternative = "greater")
 
-library(limma)
-rankSumTestWithCorrelation(index, stat)
-
-weightedRankSumTestWithCorrelation(index, stat)
-
-## rank sum test with correlation, no weights
-rankSumTestWithCorrelation(index, stat, correlation=0.1)
-weightedRankSumTestWithCorrelation(index, stat, correlation=0.1)
-
-## weighted rank sum test with correlation
-weight <- runif(length(index), 0, 1)
-weightedRankSumTestWithCorrelation(index, stat, weight=weight, correlation=0.1)
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

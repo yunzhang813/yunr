@@ -1,2 +1,1 @@
-importFrom(limma, rankSumTestWithCorrelation)
 export(weightedRankSumTestWithCorrelation)

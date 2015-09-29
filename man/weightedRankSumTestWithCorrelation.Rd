@@ -10,14 +10,14 @@ An extension of the two-sample Mann-Whitney U test (or Wilcoxon rank sum test). 
 }
 
 \usage{
-weightedRankSumTestWithCorrelation(index, statistics, weights=NULL, correlation=0, df=Inf)
+weightedRankSumTestWithCorrelation(index, statistics, weight=NULL, correlation=0, df=Inf)
 }
 
 \arguments{
   \item{index}{vector of indices indicating the test group elements.}
   \item{statistics}{numeric vector contains all the summary statistics or observed values from both groups.}
-  \item{weights}{numeric vector, of the same length as \code{index}, giving weights for the elements in the test group. If \code{NULL}, all elements are weighted equally with unit weight.}
-  \item{correlation}{correlation in the test group. Elements in the second group are assumed independent of each other and of the test group. Default value = 0.} 
+  \item{weight}{numeric vector, of the same length as \code{index}, giving weights for the elements in the test group. If \code{NULL}, all elements are weighted equally with unit weight.}
+  \item{correlation}{correlation in the test group. Elements in the second group are assumed independent of each other and of the test group.} 
   \item{df}{degrees of freedom, based on which the correlation is estimated.} 
 }
 
@@ -51,7 +51,7 @@ Yun Zhang
 \seealso{
 \code{\link{wilcox.test}} performs the Wilcoxon rank sum test.
 
-\code{\link{rankSumTestwithCorrelation}} in the \code{\{limma\}} package performs the correlation extention of the rank sum test.
+\code{\link{rankSumTestWithCorrelation}} in the \code{limma} package performs the correlation extention of the rank sum test.
 }
 
 \examples{
@@ -62,6 +62,7 @@ stat[index] <- stat[1:10]+1
 weight <- runif(length(index), 0, 1)
 
 weightedRankSumTestWithCorrelation(index, stat)
+weightedRankSumTestWithCorrelation(index, stat, correlation=0.1)
 weightedRankSumTestWithCorrelation(index, stat, weight=weight, correlation=0.1)
 
 ## Wilcoxon rank sum test
@@ -70,6 +71,10 @@ group[index] <- 1
 group <- factor(group)
 wilcox.test(stat ~ group, alternative = "less")
 wilcox.test(stat ~ group, alternative = "greater")
+
+## rank sum test with correlation
+library(limma)
+rankSumTestWithCorrelation(index, stat, correlation=0.1)
 }
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the

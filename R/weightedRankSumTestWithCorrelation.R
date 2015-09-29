@@ -1,6 +1,6 @@
-weightedRankSumTestWithCorrelation <- function(index,statistics,weights=NULL,correlation=0,df=Inf)
+weightedRankSumTestWithCorrelation <- function(index,statistics,weight=NULL,correlation=0,df=Inf)
 # Two-sample rank sum test using Mann-Whitney U-statistic,
-# allowing weights and correlation in test group.
+# allowing weight and correlation in test group.
 # Developer and time: Yun Zhang, 9-12-2015.
 {
   n <- length(statistics)
@@ -12,11 +12,11 @@ weightedRankSumTestWithCorrelation <- function(index,statistics,weights=NULL,cor
   statistics0 <- setdiff(statistics, statistics[index])
   for (i in 1:length(index)){r[i] <- sum(statistics[index[i]] > statistics0)}
   
-  ## weights
-  if(is.null(weights)){weights <- rep(1, n1)}
-  U.w <- sum(weights*r)
-  n1.w <- sum(weights)
-  c1 <- sum(weights^2)
+  ## weight
+  if(is.null(weight)){weight <- rep(1, n1)}
+  U.w <- sum(weight*r)
+  n1.w <- sum(weight)
+  c1 <- sum(weight^2)
   c2 <- n1.w^2 - c1
   
   ## mean and variance estimates of Mann-Whitney U-statistic
